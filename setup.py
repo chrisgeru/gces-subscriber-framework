@@ -13,8 +13,8 @@ requires = [
 extras_require = {
     'test': [
         'coverage==4.5.1',
-        'pytest',
-        'pytest-cov',
+        'pytest==3.8.1',
+        'pytest-cov==2.6.0',
         'pytest-mock',
         'pytest-capturelog>=0.7',
     ],
