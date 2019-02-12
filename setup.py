@@ -10,12 +10,18 @@ requires = [
     'gces>=0.0.9a0',
 ]
 
-tests_require = [
-    'pytest',
-    'pytest-cov',
-    'pytest-mock',
-    'pytest-capturelog>=0.7',
-]
+extras_require = {
+    'test': [
+        'coverage==4.5.1',
+        'pytest',
+        'pytest-cov',
+        'pytest-mock',
+        'pytest-capturelog>=0.7',
+    ],
+    'ci': [
+        'python-coveralls==2.9.1',
+    ]
+}
 
 setup(
     name='gces_subsfm',
@@ -34,9 +40,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    extras_require={
-        'testing': tests_require,
-    },
+    extras_require=extras_require,
     install_requires=requires,
     entry_points = {
         'console_scripts': [

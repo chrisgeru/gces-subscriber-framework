@@ -1,0 +1,20 @@
+language: python
+python:
+- '2.7'
+- '3.5'
+- '3.6'
+install:
+- pip install -e .[test,ci]
+script:
+- pytest --cov=gces --cov-report annotate
+deploy:
+  provider: pypi
+  user: debonzi
+  password:
+    secure: jqlufpcXas+KqLYihKAN5pE3moq2hYdGZPztsh2GO0a3fQrUizTTTJOXQGvPnDhkgvOFQss+Eb8WzX4IKbi66dDTix0konHdN1JfVL8b697Iu14FTUKWh52g39T3216zfQMxYMzMT6gqL7gFsYF1zHaREaib0dOqR0pVXZzVRbSXErEDj/eggBDo2Aw5Vt/FVz/p7Yt4GOcSwVgksN+tN9pASYQXVg44SyOetTFNb/sCSxgQUu/L42DrvxBpGVG3eTheiFpAM0phhsguEllmyv5SNMIKz+l/GZF75cYApXAz4q4ri0c9h2xOjTQhw05OtGdIXzHKQiOogk28IGeIDnBESkyBpyOjGp72YlPro6//7OBkuC1i03nVkxDWUogMcV49fDZZmpm2mEUwi1hX6FotX6Hp0GEynQ2WC+5IkjF9nVPFi+eORM0vvAhCHkfoQy3pDDtA8S6gUCacxuNO8FhKy4Iy5CxMtDwbELW3WWGuUvRshRBULU1W+wU4RUJ4uPrZffBItgkf8LsTOz7P7EBD6aY92Z+SCs7oLZAA/wAXzVeN9SauT6tI6Z+PvvF7qx4cOZZdoHD7Y7xrBJ2Bx3nupaSXJbYO1z/++nbFDszLTcBLwHXJm6BdCiobTmHE/O0q+143MZrTEhnle7t88q7o8gg5ol3h+xTcyDW7040=
+  on:
+    # tags: true
+    branch: master
+    python: '3.6'
+after_success:
+- coveralls
