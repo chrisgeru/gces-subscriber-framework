@@ -7,7 +7,7 @@ with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
 
 requires = [
-    'gces>=0.0.9a0',
+    # 'gces>=0.0.9a0',
 ]
 
 extras_require = {
