@@ -30,7 +30,13 @@ class AppConfig:
     def __init__(self, cmd_obj, app_path):
         mod_path, app_name = app_path.split(':')
         mod = importlib.import_module(mod_path)
-        self.app = getattr(mod, app_name)
+        app_object = getattr(mod, app_name)
+        if callable(app_object):
+            self.app = app_object()
+        else:
+            self.app = app_object
+        if not isinstance(self.app, Configurator):
+            raise ValueError("App must be a instance of gces_subsfm.Configurator")
         cmd_obj.app_config = self
 
 
